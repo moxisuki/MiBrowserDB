@@ -13,7 +13,7 @@
 # Get Started
 Database default path
 ```shell
-/data/data/com.android.browser/databases/
+/data/data/com.android.browser/databases/browser2.db
 ```
 Initialization
 ```kotlin
