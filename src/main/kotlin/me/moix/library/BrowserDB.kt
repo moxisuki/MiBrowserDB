@@ -11,6 +11,7 @@ import org.ktorm.logging.LogLevel
  * @param url JDBC url eg: jdbc:sqlite:./test.db
  * @exception Throwable
  */
+@Suppress("unused")
 class BrowserDB(url:String) {
     private val database:Database
     init{
