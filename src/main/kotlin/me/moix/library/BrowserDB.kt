@@ -1,4 +1,4 @@
-package me.mixo.library
+package me.moix.library
 
 import org.ktorm.database.Database
 import org.ktorm.dsl.*

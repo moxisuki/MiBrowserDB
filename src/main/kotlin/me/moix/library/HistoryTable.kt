@@ -1,4 +1,4 @@
-package me.mixo.library
+package me.moix.library
 
 import org.ktorm.schema.Table
 import org.ktorm.schema.int
