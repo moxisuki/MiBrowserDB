@@ -22,7 +22,7 @@ data class HistoryData(
     val created:Long,
     val last_date:Long,
     val url :String,
-    val visits:Int,
-    val user_entered:Int,
-    val default_color:Int
+    val visits:Int? = 0,
+    val user_entered:Int? = 0,
+    val default_color:Int? = -1
 )

@@ -4,7 +4,6 @@ import org.ktorm.database.Database
 import org.ktorm.dsl.*
 import org.ktorm.logging.ConsoleLogger
 import org.ktorm.logging.LogLevel
-import org.ktorm.logging.Slf4jLoggerAdapter
 
 
 /**
@@ -79,6 +78,65 @@ class BrowserDB(url:String) {
                 ))
             }
             return list
+        }catch (e:Throwable){
+            throw e
+        }
+    }
+
+    /**
+     * 插入一条历史记录
+     * @param data HistoryData对象
+     */
+    fun insertHistory(data: HistoryData){
+        try {
+            database.insert(HistoryTable){
+                set(it.id,data.id)
+                set(it.title,data.title)
+                set(it.created,data.created)
+                set(it.last_date,data.last_date)
+                set(it.visits,data.visits)
+                set(it.url,data.url)
+                set(it.user_entered,data.user_entered)
+                set(it.default_color,data.default_color)
+            }
+        }catch (e:Throwable){
+            throw e
+        }
+    }
+
+    /**
+     * 删除一条历史记录
+     * @suppress 该方法的上一条方法不可为ID相同的插入操作
+     * @param id
+     */
+    fun deleteHistory(id: Int){
+        try {
+            database.delete(HistoryTable){
+                it.id eq id
+            }
+        }catch (e:Throwable){
+            throw e
+        }
+    }
+
+    /**
+     * 更新一条历史记录
+     * @param data
+     */
+    fun updateHistory(data: HistoryData){
+        try {
+            database.update(HistoryTable){
+                set(it.title,data.title)
+                set(it.created,data.created)
+                set(it.last_date,data.last_date)
+                set(it.visits,data.visits)
+                set(it.url,data.url)
+                set(it.user_entered,data.user_entered)
+                set(it.default_color,data.default_color)
+                where {
+                    it.id eq data.id
+                }
+            }
         }catch (e:Throwable){
             throw e
         }
