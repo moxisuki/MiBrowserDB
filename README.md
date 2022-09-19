@@ -7,6 +7,7 @@
     * [InsertHistory](#inserthistory)
     * [DeleteHistory](#deletehistory)
     * [UpdateHistory](#updatehistory)
+* [TODO](#todo)
 
 <!-- TOC -->
 
@@ -75,3 +76,7 @@ browserDB.updateHistory(
     )
 )
 ```
+# TODO
+- [ ] Bookmark
+- [ ] Auto-sync in xposed moudule
+- [ ] support more browser
