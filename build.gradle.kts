@@ -2,9 +2,10 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm") version "1.7.10"
+    `maven-publish`
 }
 
-group = "me.moix"
+group = "me.moix.library"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -24,4 +25,22 @@ tasks.test {
 
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/moxisuki/MiBrowserDB")
+            credentials {
+                username = project.findProperty("gpr.user") as String
+                password = project.findProperty("gpr.key") as String
+            }
+        }
+    }
+    publications {
+        register<MavenPublication>("gpr") {
+            from(components["java"])
+        }
+    }
 }
