@@ -25,6 +25,12 @@ class BrowserDB(url:String) {
             throw e
         }
     }
+
+    /**
+     * 获取所有历史记录
+     *
+     * @return 符合条件的历史记录的集合
+     */
     fun getAllHistory():List<HistoryData>{
         try {
             val query = database.from(HistoryTable).select()
@@ -52,7 +58,7 @@ class BrowserDB(url:String) {
      *
      * @param start 开始时间 时间戳（毫秒）
      * @param end 结束时间 时间戳（毫秒）
-     * @return 历史记录的集合
+     * @return 符合条件的历史记录的集合
      */
     fun getHistoryInterval(start: Long, end: Long):List<HistoryData>{
         try {
